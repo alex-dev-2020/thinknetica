@@ -12,7 +12,7 @@ puts"Please input side b"
 b = gets.to_f
 puts "Please input side c"
 c = gets.to_f
-#  запилил условие для равнобедренного через регулярки 
+# запилил условие для равнобедренного через регулярки 
 if a == b && b == c
     puts"You have an isosceles triangle!"
 else
