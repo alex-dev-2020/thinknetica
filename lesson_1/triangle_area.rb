@@ -6,4 +6,4 @@ puts "Please input height"
 height = gets.to_f
 triangle_area = (base_l*height)/2
 # puts
-puts "The trianle area is: #{triangle_area.round(2)}"
+puts "The triagnle area is: #{triangle_area.round(2)}"
