@@ -11,16 +11,17 @@ c = gets.to_f
 # Формула дискриминанта Дискриминант D квадратного трёхчлена ax2 + bx + c равен 
 # b^2 - 4ac
 # вычисляем дикриминант и имеем три варианта 
-discriminant = b*b - (4*a*c)
+discriminant = b**2 - (4 * a * c)
 # D > 0  выводим диксриминант и 2 корня
 if discriminant > 0
-    root_1 = (-b+ (Math.sqrt(discriminant)))/(2*a)
-    root_2 = (-b-(Math.sqrt(discriminant)))/(2*a)
+    sq_root_d = Math.sqrt(discriminant)
+    root_1 = (-b + sq_root_d)/(2*a)
+    root_2 = (-b - sq_root_d)/(2*a)
     puts "Дискриминант равен:#{discriminant}"
     puts "Корни равны:#{root_1} и #{root_2}"
 # D = 0 выводим дискрриминант и  1 корень(корни равны)
-elsif discriminant ==0
-    root_3 = root_1 = (-b+(Math.sqrt(discriminant)))/(2*a)
+elsif discriminant == 0
+    root_3 = -b/(2*a)
     puts "Дискриминант равен: #{discriminant}"
     puts "Корень единственный: #{root_3}"
 # D < 0 выводим дискриминант и сообщение - корней нет
