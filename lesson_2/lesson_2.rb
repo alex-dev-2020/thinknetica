@@ -23,7 +23,7 @@ days_in_a_month.each {|month, days| puts month if days == 30}  }
 # вариант через until
 test_array = []
 i = 10
-until i==105 # при значении i= 100 последнее число будет 95
+until i==105 # при значении i = 100 последнее число будет 95
     test_array << i
 	i += 5
 end
