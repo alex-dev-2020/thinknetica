@@ -68,8 +68,29 @@ days_in_month[1] = 29 if year % 400 == 0 || ( year % 4 ==0 && year % 100 != 0)
 
 date = 0
 for i in 0..month - 2
-  sum += days_in_month[i]
+  date += days_in_month[i]
 end
 date += day
 
 puts "Порядковый номер даты: #{date}"
+
+# 6. Сумма покупок. Пользователь вводит поочередно название товара, цену за единицу и кол-во купленного товара (может быть нецелым числом). 
+#  даже если покупки одинаковые - скрипт хранит их как отдельные записи
+cart = {}
+sum = 0
+loop do
+  print "Введите название товара (или \"стоп\"): "
+  name = gets.chomp
+  break if name == "стоп"
+  print "цену: "
+  price = gets.chomp.to_f
+  print "кол-во: "
+  count = gets.chomp.to_f
+  
+  cart[name] = {"price" => price, "count" => count}  
+end 
+
+cart.each {|name, hash| sum += hash["price"] * hash["count"]}
+
+puts cart
+puts "Итого: #{sum}"
