@@ -36,12 +36,12 @@ class Train
 # здесь в методе просто подсчитываем количество элементов этого массива, генерим очередной и добавляем(пушим)
 # здесь же проверяем условие speed == 0
     def add_wagon
-    	(@speed == 0) ? @wagons << "wagon \##{wagons_qty + 1}" : warning 
+    	(@speed != 0) ? @wagons << "wagon \##{wagons_qty + 1}" : warning 
     end
 
 # detach wagon
     def detach_wagon
-    	(@speed == 0) ? @wagons.pop : warning    	
+    	(@speed != 0) ? @wagons.pop : warning    	
     end
 
 # количество вагонов 
