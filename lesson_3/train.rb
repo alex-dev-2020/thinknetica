@@ -1,6 +1,6 @@
 class Train
 
-	attr_reader  :train_id, :train_type, :wagon_qty :current_st
+	attr_reader  :train_id, :train_type, :wagon_qty,  :current_st
 
     def initialize(train_id, train_type, wagon_qty)
 # speed = 0 at creation
