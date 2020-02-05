@@ -96,7 +96,7 @@ end
 # надо запилить проверку и алёрт на последнее значение
 
   def next_st
-  	next_st = (@route.stations[@current_st] != @route.stations[last_st])  @route.stations[@current_st -1] : warning_route_border
+  	next_st = (@route.stations[@current_st] != @route.stations[last_st])?  @route.stations[@current_st -1] : warning_route_border
   end
 
   def warning_route_border
