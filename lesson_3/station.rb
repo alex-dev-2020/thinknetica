@@ -1,8 +1,5 @@
 class Station 
 
-
-
-
   # only name will getting from instance of the class
   attr_reader  :name, :trains
 
