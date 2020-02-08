@@ -55,14 +55,7 @@ class Train
   end
 
 
-  # возвращаем текущую  
-  
-  def current_station 
-    @route.stations[@current_station]
-  end
-
-
-  # При перемещении текущая станция отправляет поезд и следующая его принимает (проверкa уже реализована в next_station & previous-station)
+ # При перемещении текущая станция отправляет поезд и следующая его принимает (проверкa уже реализована в next_station & previous-station)
 
   def move_forward
     current_station.train_out(id) && next_station.train_in(id)
