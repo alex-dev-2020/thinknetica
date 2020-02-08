@@ -9,8 +9,7 @@ class Route
 
   def initialize(first_station, last_station)
     @stations = [first_station, last_station]
-  end
-
+  end  
   #добавление  станции в маршрут (предполагается, что -1  - это индекс последнего элемента)
 
   def add_station(station)
