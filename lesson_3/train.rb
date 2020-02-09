@@ -51,7 +51,7 @@ class Train
   def accept_route(route)
     @route = route
     # При назначении маршрута первая станция принимает поезд
-    @current_station = @route.stations.first
+    @route.stations.first.train_in(@id)
   end
 
 
