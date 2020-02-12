@@ -48,23 +48,32 @@ class Train
   # в route лежат объекты, в current_station лежит текущая станция
   # при назначении маршрута поезду, поезд автоматически помещается на первую станцию в маршруте @current_station = first_station 
 
+
   def accept_route(route)
     @route = route
     # При назначении маршрута первая станция принимает поезд
-    @route.stations.first.train_in(@id)
+    @current_station = @route.stations.first
+    @current_station.train_in(self)
   end
+
+  # мой старый вариант - не забыть удалить
+  # def accept_route(route)
+  #   @route = route
+  #   # При назначении маршрута первая станция принимает поезд
+  #   @route.stations.first.train_in(@id)
+  # end
 
 
  # При перемещении текущая станция отправляет поезд и следующая его принимает (проверкa уже реализована в next_station & previous-station)
 
   def move_forward
-    current_station.train_out(id) && next_station.train_in(id)
+    current_station.train_out(self) && next_station.train_in(self)
   end
 
   #  перемещаемся назад , проверкa уже реализована в next_station & previous-station
   #  не выезжаем ли мы за границу маршрута
   def move_back
-    current_station.train_out(id) && previous_station.train_in(id)
+    current_station.train_out(self) && previous_station.train_in(self)
   end
 
 

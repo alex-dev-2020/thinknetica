@@ -19,10 +19,10 @@ class Route
   # удаление станции из маршрута  метод .delete (нужно реализовать проверку != last_st && != first_st)
 
   def delete_station(station)
-    if station != station.first && station != station.last
-	  @stations.delete(station)
+    if (station != @stations.first) && (station != @stations.last)
+	    @stations.delete(station)
     else
-	  puts 'Конечные точки маршрута удалить нельзя!'
+	    puts 'Конечные точки маршрута удалить нельзя!'
     end
   end
 end
