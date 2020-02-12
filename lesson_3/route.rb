@@ -9,12 +9,11 @@ class Route
 
   def initialize(first_station, last_station)
     @stations = [first_station, last_station]
-  end
-
+  end  
   #добавление  станции в маршрут (предполагается, что -1  - это индекс последнего элемента)
 
   def add_station(station)
-    @stations.insert(station)(-2, station)
+    @stations.insert(-2, station)
   end	
 
   # удаление станции из маршрута  метод .delete (нужно реализовать проверку != last_st && != first_st)
