@@ -3,7 +3,6 @@ class Train
   attr_reader  :id, :type, :wagons,  :current_station
 
   def initialize(id, type, wagons)
-  # speed = 0 at creation
     @id = id
     @type = type
     @wagons = wagons
@@ -15,7 +14,7 @@ class Train
   end
 
   def speed_down(delta)
-  # more attractive cecking of speed > 0 in line using ?
+  
       @speed = (@speed - delta > 0 ) ? @speed - delta : stop
   end
 
@@ -29,70 +28,62 @@ class Train
   end
 
 
-  # переделал после code-review - @wagons - просто переменная
 
 
   def add_wagon
     (@speed == 0) ? @wagons += 1  : warning_speed
   end
-#  надо бы отдельный алёрт сделать по этому поводу
-  # переделал после code-review -@ wagons - просто переменная + проверка на количество вагонов > 0 
-# detach wagon
+#
   def detach_wagon
     (@speed == 0 && wagons > 0) ? @wagons -= 1 : warning_speed    	
   end
 
 
-  # принимает объект класса Route
-  # может ПРИНИМАТЬ маршрут следования - в моем случае ОБЪЕКТ класса Route
-  # в route лежат объекты, в current_station лежит текущая станция
-  # при назначении маршрута поезду, поезд автоматически помещается на первую станцию в маршруте @current_station = first_station 
-
-
-  def accept_route(route)
+   def accept_route(route)
     @route = route
     # При назначении маршрута первая станция принимает поезд
     @current_station = @route.stations.first
+    # нужен индекс массива @route.stations чтобы передать его в методы next_station / previous-station
+    @current_station_index = @route.stations.index(@current_station)
     @current_station.train_in(self)
   end
 
-  # мой старый вариант - не забыть удалить
-  # def accept_route(route)
-  #   @route = route
-  #   # При назначении маршрута первая станция принимает поезд
-  #   @route.stations.first.train_in(@id)
-  # end
 
 
- # При перемещении текущая станция отправляет поезд и следующая его принимает (проверкa уже реализована в next_station & previous-station)
+  # При перемещении текущая станция отправляет поезд и следующая его принимает (проверкa уже реализована в next_station & previous_station)
+
+  # нужен индекс массива @route.stations чтобы передать его в методы next_station / previous-station
+
+  
 
   def move_forward
-    current_station.train_out(self) && next_station.train_in(self)
+    @current_station.train_out(self) 
+    next_station.train_in(self)
+    @current_station_index += 1
+    @current_station = @route.stations[@current_station_index]
   end
 
   #  перемещаемся назад , проверкa уже реализована в next_station & previous-station
   #  не выезжаем ли мы за границу маршрута
   def move_back
-    current_station.train_out(self) && previous_station.train_in(self)
+    @current_station.train_out(self)  
+    previous_station.train_in(self)
+    @current_station_index -= 1
+    @current_station = @route.stations[@current_station_index]
   end
 
-
-  # возвращаем предыдущую (название из списка @route.stations а не индекс!!!!)
-  # надо запилить проверку и алёрт на первое  значение
 
   def previous_station
-    previous_station = (@route.stations[@current_station] != @route.stations[@route.stations.first])? @route.stations[@current_station - 1] : warning_route_border
+    previous_station = (@route.stations[@current_station_index] != @route.stations.first) ? @route.stations[@current_station_index - 1] : warning_route_border
   end
 
-  # следующую (название из списка @route.stations а не индекс!!!!)
-  # надо запилить проверку и алёрт на последнее значение
 
   def next_station
-    next_station = (@route.stations[@current_station] != @route.stations[@route.stations.last])?  @route.stations[@current_station + 1] : warning_route_border
+    next_station = (@route.stations[@current_station_index] != @route.stations.last) ?  @route.stations[@current_station_index + 1] : warning_route_border
   end
-  # оставляю пока пустой метод
+ 
   def warning_route_border
-  
+    puts "Only for test!"
   end
 
 
