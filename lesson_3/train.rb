@@ -13,8 +13,8 @@ class Train
   end
 
   def speed_down(delta)
-    down_speed -= delta
-    @speed = down_speed > 0 ? down_speed : stop
+    @speed -= delta
+    @speed = @speed > 0 ? @speed : stop
   end
 
   def stop
@@ -53,10 +53,10 @@ class Train
   end
 
   def next_station
-    (@route.stations[@current_station_index] != @route.stations.last) ? @route.stations[@current_station_index + 1]
+    @route.stations[@current_station_index + 1] if @route.stations[@current_station_index] != @route.stations.last
   end
 
   def previous_station
-    (@route.stations[@current_station_index] != @route.stations.first) ? @route.stations[@current_station_index - 1]
+    @route.stations[@current_station_index - 1] if @route.stations[@current_station_index] != @route.stations.first
   end
 end
