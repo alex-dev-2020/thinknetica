@@ -1,7 +1,7 @@
 # thinknetica
 ## RoR итенсив от Thinknetica 
 
-- Lesson 1
+### Lesson 1
 
 [ideal_weight.rb](https://github.com/alex-dev-2020/thinknetica/blob/master/lesson_1/ideal_weight.rb) - считаем идеальный вес 
 
@@ -12,7 +12,7 @@
 [triangle_area.rb](https://github.com/alex-dev-2020/thinknetica/blob/master/lesson_1/triangle_area.rb) - площадь треугольника 
 
 
-- Lesson 2
+### Lesson 2
 
 [lesson_2.rb](https://github.com/alex-dev-2020/thinknetica/blob/master/lesson_2/lesson_2.rb)
 
@@ -25,7 +25,7 @@
 6. Сумма покупок. Пользователь вводит поочередно название товара, цену за единицу и кол-во купленного товара (может быть нецелым числом). 
 даже если покупки одинаковые - скрипт хранит их как отдельные записи
 
- - Lesson 3
+ ### Lesson 3
  
  [route.rb](https://github.com/alex-dev-2020/thinknetica/blob/master/lesson_3/route.rb)
  Класс Route (Маршрут):
