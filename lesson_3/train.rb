@@ -22,11 +22,11 @@ class Train
   end
 
   def add_wagon
-    @speed == 0 ? @wagons += 1
+    @wagons += 1 if @speed == 0
   end
 
   def detach_wagon
-    (@speed == 0 && wagons > 0) ? @wagons -= 1
+    @wagons -= 1 if @speed == 0 && wagons > 0
   end
 
   def accept_route(route)
